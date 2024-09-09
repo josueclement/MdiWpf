@@ -4,7 +4,6 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:mdi="clr-namespace:MdiWpf;assembly=MdiWpf"
-        xmlns:local="clr-namespace:Tester"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
@@ -13,12 +12,14 @@
                 <DrawingImage>
                     <DrawingImage.Drawing>
                         <DrawingGroup>
-                            <GeometryDrawing Brush="Red"
-                                             Geometry="{mdi:IconGeometry}"/>
+                            <GeometryDrawing Brush="Black"
+                                             Geometry="{mdi:IconGeometry IconName='target-account'}"/>
                         </DrawingGroup>
                     </DrawingImage.Drawing>
                 </DrawingImage>
             </Image.Source>
         </Image>
+        
+        <Image Source="{mdi:IconSource IconName='barcode-scan', Brush=Coral}" />
     </Grid>
 </Window>
