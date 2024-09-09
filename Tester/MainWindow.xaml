@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:mdi="clr-namespace:MdiWpf;assembly=MdiWpf"
         xmlns:controls="clr-namespace:MdiWpf.Controls;assembly=MdiWpf"
+        xmlns:local="clr-namespace:Tester"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800"
+        d:DataContext="{d:DesignInstance {x:Type local:MainWindowViewModel}}">
     <Grid>
         <!-- <Image> -->
         <!--     <Image.Source> -->
@@ -21,15 +23,19 @@
         <!--     </Image.Source> -->
         <!-- </Image> -->
         <!-- -->
-        <!-- <Image Source="{mdi:IconSource IconName='barcode-scan', Brush=Coral}" /> -->
+        <Image Source="{mdi:IconSource IconName='barcode-scan', Brush=Coral}" />
         <!-- -->
         <!-- <mdi:TestControl VerticalAlignment="Top" HorizontalAlignment="Left" /> -->
-        <controls:VectorIcon Geometry="{mdi:IconGeometry IconName='server-security'}"
-                             Brush="Magenta"
-                             Width="200" Height="200"/>
-        <!-- <Button VerticalAlignment="Top" -->
-        <!--         HorizontalAlignment="Left" -->
-        <!--         Content="Change" -->
-        <!--         /> -->
+        <!-- <controls:VectorIcon Geometry="{mdi:IconGeometry IconName='server-security'}" -->
+        <!--                      Brush="Magenta" -->
+        <!--                      Width="200" Height="200"/> -->
+        <controls:VectorIcon Geometry="{Binding Geometry}"
+                             Brush="{Binding Brush}"
+                             Width="200"
+                             Height="200"/>
+        <Button VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                Content="Change"
+                Command="{Binding ChangeIconCommand}" />
     </Grid>
 </Window>
