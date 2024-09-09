@@ -4,22 +4,32 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:mdi="clr-namespace:MdiWpf;assembly=MdiWpf"
+        xmlns:controls="clr-namespace:MdiWpf.Controls;assembly=MdiWpf"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Image>
-            <Image.Source>
-                <DrawingImage>
-                    <DrawingImage.Drawing>
-                        <DrawingGroup>
-                            <GeometryDrawing Brush="Black"
-                                             Geometry="{mdi:IconGeometry IconName='target-account'}"/>
-                        </DrawingGroup>
-                    </DrawingImage.Drawing>
-                </DrawingImage>
-            </Image.Source>
-        </Image>
-        
-        <Image Source="{mdi:IconSource IconName='barcode-scan', Brush=Coral}" />
+        <!-- <Image> -->
+        <!--     <Image.Source> -->
+        <!--         <DrawingImage> -->
+        <!--             <DrawingImage.Drawing> -->
+        <!--                 <DrawingGroup> -->
+        <!--                     <GeometryDrawing Brush="Black" -->
+        <!--                                      Geometry="{mdi:IconGeometry IconName='target-account'}"/> -->
+        <!--                 </DrawingGroup> -->
+        <!--             </DrawingImage.Drawing> -->
+        <!--         </DrawingImage> -->
+        <!--     </Image.Source> -->
+        <!-- </Image> -->
+        <!-- -->
+        <!-- <Image Source="{mdi:IconSource IconName='barcode-scan', Brush=Coral}" /> -->
+        <!-- -->
+        <!-- <mdi:TestControl VerticalAlignment="Top" HorizontalAlignment="Left" /> -->
+        <controls:VectorIcon Geometry="{mdi:IconGeometry IconName='server-security'}"
+                             Brush="Magenta"
+                             Width="200" Height="200"/>
+        <!-- <Button VerticalAlignment="Top" -->
+        <!--         HorizontalAlignment="Left" -->
+        <!--         Content="Change" -->
+        <!--         /> -->
     </Grid>
 </Window>

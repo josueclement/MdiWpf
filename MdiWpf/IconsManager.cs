@@ -5,15 +5,23 @@ using System.Xml;
 
 namespace MdiWpf;
 
-internal static class IconsManager
+/// <summary>
+/// MDI icons manager
+/// </summary>
+public static class IconsManager
 {
     private static readonly Assembly Assembly = typeof(IconsManager).Assembly;
 
-    internal static Geometry? GetIconGeometry(string iconName)
+    /// <summary>
+    /// Get icon geometry by its name
+    /// </summary>
+    /// <param name="name">Icon name</param>
+    /// <returns>Icon geometry</returns>
+    public static Geometry? GetIconGeometry(string name)
     {
         try
         {
-            var stream = Assembly.GetManifestResourceStream($"MdiWpf.svg.{iconName}.svg");
+            var stream = Assembly.GetManifestResourceStream($"MdiWpf.svg.{name}.svg");
 
             if (stream is null)
                 return null;
@@ -48,9 +56,15 @@ internal static class IconsManager
         }
     }
 
-    internal static DrawingImage? GetIconImageSource(string iconName, Brush brush)
+    /// <summary>
+    /// Get icon image source by its name and brush
+    /// </summary>
+    /// <param name="name">Icon name</param>
+    /// <param name="brush">Icon brush</param>
+    /// <returns></returns>
+    public static DrawingImage? GetIconImageSource(string name, Brush brush)
     {
-        var geometry = GetIconGeometry(iconName);
+        var geometry = GetIconGeometry(name);
 
         if (geometry is null)
             return null;
