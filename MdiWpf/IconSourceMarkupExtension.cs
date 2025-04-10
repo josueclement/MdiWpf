@@ -5,10 +5,12 @@ using System.Windows.Media;
 namespace MdiWpf;
 
 /// <summary>
-/// Provides an icon image source based on its name
+/// Provides an icon image source
 /// </summary>
-public class IconSourceExtension : MarkupExtension
+public class IconSourceMarkupExtension : MarkupExtension
 {
+    private static readonly IconsFactory Factory = new();
+    
     /// <summary>
     /// Icon brush
     /// </summary>
@@ -18,10 +20,8 @@ public class IconSourceExtension : MarkupExtension
     /// Icon name
     /// </summary>
     public string IconName { get; set; } = string.Empty;
-    
+
     /// <inheritdoc />
     public override object? ProvideValue(IServiceProvider serviceProvider)
-    {
-        return IconsManager.GetIconImageSource(IconName, Brush);
-    }
+        => Factory.CreateDrawingImage(IconName, Brush);
 }

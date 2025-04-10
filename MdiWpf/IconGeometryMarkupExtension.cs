@@ -4,16 +4,18 @@ using System.Windows.Markup;
 namespace MdiWpf;
 
 /// <summary>
-/// Provides an icon geometry based on its name
+/// Provides an icon geometry
 /// </summary>
-public class IconGeometryExtension : MarkupExtension
+public class IconGeometryMarkupExtension : MarkupExtension
 {
+    private static readonly IconsFactory Factory = new();
+    
     /// <summary>
     /// Icon name
     /// </summary>
     public string IconName { get; set; } = string.Empty;
-    
+
     /// <inheritdoc />
     public override object? ProvideValue(IServiceProvider serviceProvider)
-        => IconsManager.GetIconGeometry(IconName);
+        => Factory.CreateIconGeometry(IconName);
 }

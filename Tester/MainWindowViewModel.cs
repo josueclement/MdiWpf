@@ -7,10 +7,13 @@ namespace Tester;
 
 public class MainWindowViewModel : ObservableObject
 {
+    // TODO: replace with DI
+    private static readonly IconsFactory Factory = new();
+    
     public MainWindowViewModel()
     {
         Brush = Brushes.Blue;
-        Geometry = IconsManager.GetIconGeometry("source-repository");
+        Geometry = Factory.CreateIconGeometry("source-repository");
         ChangeIconCommand = new RelayCommand(ChangeIcon);
     }
     
@@ -32,7 +35,7 @@ public class MainWindowViewModel : ObservableObject
 
     private void ChangeIcon()
     {
-        Geometry = IconsManager.GetIconGeometry("sync-circle");
+        Geometry = Factory.CreateIconGeometry("sync-circle");
         Brush = Brushes.Red;
     }
 }

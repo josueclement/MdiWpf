@@ -22,8 +22,8 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
-        var names = typeof(IconGeometryExtension).Assembly.GetManifestResourceNames();
-        var stream = GetEmbeddedResourceStream("MdiWpf.svg.abacus.svg", typeof(IconGeometryExtension).Assembly);
+        var names = typeof(IconGeometryMarkupExtension).Assembly.GetManifestResourceNames();
+        var stream = GetEmbeddedResourceStream("MdiWpf.svg.abacus.svg", typeof(IconGeometryMarkupExtension).Assembly);
         stream.Close();
         stream.Dispose();
         
