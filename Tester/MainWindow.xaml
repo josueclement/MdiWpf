@@ -9,33 +9,27 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
         d:DataContext="{d:DesignInstance {x:Type local:MainWindowViewModel}}">
-    <Grid>
-        <!-- <Image> -->
-        <!--     <Image.Source> -->
-        <!--         <DrawingImage> -->
-        <!--             <DrawingImage.Drawing> -->
-        <!--                 <DrawingGroup> -->
-        <!--                     <GeometryDrawing Brush="Black" -->
-        <!--                                      Geometry="{mdi:IconGeometry IconName='target-account'}"/> -->
-        <!--                 </DrawingGroup> -->
-        <!--             </DrawingImage.Drawing> -->
-        <!--         </DrawingImage> -->
-        <!--     </Image.Source> -->
-        <!-- </Image> -->
-        <!-- -->
-        <Image Source="{mdi:IconSource IconName='barcode-scan', Brush=Coral}" />
-        <!-- -->
-        <!-- <mdi:TestControl VerticalAlignment="Top" HorizontalAlignment="Left" /> -->
-        <!-- <controls:VectorIcon Geometry="{mdi:IconGeometry IconName='server-security'}" -->
-        <!--                      Brush="Magenta" -->
-        <!--                      Width="200" Height="200"/> -->
-        <controls:VectorIcon Geometry="{Binding Geometry}"
-                             Brush="{Binding Brush}"
-                             Width="200"
-                             Height="200"/>
-        <Button VerticalAlignment="Top"
-                HorizontalAlignment="Left"
-                Content="Change"
-                Command="{Binding ChangeIconCommand}" />
-    </Grid>
+    <DockPanel>
+        <Grid DockPanel.Dock="Top"
+              Height="30">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <ComboBox ItemsSource="{Binding Geometries}"
+                      SelectedItem="{Binding SelectedGeometry}"
+                      DisplayMemberPath="Key"
+                      VerticalAlignment="Center"/>
+            <ComboBox Grid.Column="1"
+                      ItemsSource="{Binding Brushes}"
+                      SelectedItem="{Binding SelectedBrush}"
+                      DisplayMemberPath="Key"
+                      VerticalAlignment="Center"/>
+        </Grid>
+        
+        <controls:VectorIcon Margin="20"
+                             Geometry="{Binding SelectedGeometry.Value}"
+                             Brush="{Binding SelectedBrush.Value}"/>
+        
+    </DockPanel>
 </Window>
