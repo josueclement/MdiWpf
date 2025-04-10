@@ -2,18 +2,26 @@
 
     <PropertyGroup>
         <OutputType>Library</OutputType>
-        <TargetFrameworks>net6.0-windows;net7.0-windows;net8.0-windows;net472</TargetFrameworks>
+        <TargetFrameworks>net6.0-windows;net7.0-windows;net8.0-windows;net9.0-windows;net472</TargetFrameworks>
         <UseWPF>true</UseWPF>
-        <UseWindowsForms>true</UseWindowsForms>
         <Nullable>enable</Nullable>
-        <LangVersion>12.0</LangVersion>
+        <LangVersion>13</LangVersion>
         <Authors>Josué Clément</Authors>
-        <Copyright>Josué Clément © 2024</Copyright>
-        <Product>MdiWpf</Product>
-        <Version>1.0.0</Version>
-        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <GenerateDocumentationFile>true</GenerateDocumentationFile>
-        <DocumentationFile>MdiWpf.xml</DocumentationFile>
+        <Copyright>Copyright © 2025 Josué Clément</Copyright>
+        <PackageId>MdiWpf</PackageId>
+        <Title>Material design icons for WPF</Title>
+        <Version>2.0.0</Version>
+        <Description>WPF vector icon library using MaterialDesign open source icons</Description>
+        <PackageTags>wpf icons materialdesign</PackageTags>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+        <PackageProjectUrl>https://github.com/josueclement/MdiWpf</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/josueclement/MdiWpf</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <IncludeSymbols>True</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+        <GenerateDocumentationFile>True</GenerateDocumentationFile>
     </PropertyGroup>
 
     <!-- Readme for the NuGet package -->
@@ -23,12 +31,12 @@
 
     <ItemGroup>
         <None Include="..\README.md" Pack="true" PackagePath="\" />
+        <None Include="..\LICENSE.md" Pack="true" PackagePath="\" />
     </ItemGroup>
 
     <ItemGroup>
       <None Remove="svg\*.svg" />
       <EmbeddedResource Include="svg\*.svg" />
-      
     </ItemGroup>
 
 </Project>

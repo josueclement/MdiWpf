@@ -1,20 +1,14 @@
-﻿using System;
+using System;
 using System.Windows.Markup;
-using System.Windows.Media;
 
 namespace MdiWpf;
 
 /// <summary>
-/// Provides an icon image source
+/// Provides an icon geometry
 /// </summary>
-public class IconSourceMarkupExtension : MarkupExtension
+public class IconGeometryExtension : MarkupExtension
 {
     private static readonly IconsFactory Factory = new();
-    
-    /// <summary>
-    /// Icon brush
-    /// </summary>
-    public Brush Brush { get; set; } = Brushes.Black;
     
     /// <summary>
     /// Icon name
@@ -23,5 +17,5 @@ public class IconSourceMarkupExtension : MarkupExtension
 
     /// <inheritdoc />
     public override object? ProvideValue(IServiceProvider serviceProvider)
-        => Factory.CreateDrawingImage(IconName, Brush);
+        => Factory.CreateIconGeometry(IconName);
 }

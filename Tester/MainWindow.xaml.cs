@@ -22,15 +22,5 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
-        var names = typeof(IconGeometryMarkupExtension).Assembly.GetManifestResourceNames();
-        var stream = GetEmbeddedResourceStream("MdiWpf.svg.abacus.svg", typeof(IconGeometryMarkupExtension).Assembly);
-        stream.Close();
-        stream.Dispose();
-        
-    }
-    
-    public static Stream GetEmbeddedResourceStream(string resourceName, Assembly assembly = null)
-    {
-        return assembly.GetManifestResourceStream(resourceName);
     }
 }

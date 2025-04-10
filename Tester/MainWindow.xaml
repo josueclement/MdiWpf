@@ -23,7 +23,7 @@
         <!--     </Image.Source> -->
         <!-- </Image> -->
         <!-- -->
-        <Image Source="{mdi:IconSourceMarkup IconName='barcode-scan', Brush=Coral}" />
+        <Image Source="{mdi:IconSource IconName='barcode-scan', Brush=Coral}" />
         <!-- -->
         <!-- <mdi:TestControl VerticalAlignment="Top" HorizontalAlignment="Left" /> -->
         <!-- <controls:VectorIcon Geometry="{mdi:IconGeometry IconName='server-security'}" -->
