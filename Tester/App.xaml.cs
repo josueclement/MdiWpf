@@ -1,6 +1,7 @@
-﻿using System.Configuration;
-using System.Data;
+﻿using MdiWpf;
+using Microsoft.Extensions.DependencyInjection;
 using System.Windows;
+using System;
 
 namespace Tester;
 
@@ -9,12 +10,30 @@ namespace Tester;
 /// </summary>
 public partial class App : Application
 {
+    private IServiceProvider? _serviceProvider;
+    public IServiceProvider ServiceProvider =>
+        _serviceProvider ?? throw new InvalidOperationException("ServiceProvider is not initialized.");
+
+    private void AddDependencyInjection()
+    {
+        var services = new ServiceCollection();
+        ConfigureServices(services);
+        _serviceProvider = services.BuildServiceProvider();
+    }
+
+    private void ConfigureServices(ServiceCollection services)
+    {
+        services.AddSingleton<MainWindow>();
+        services.AddSingleton<MainWindowViewModel>();
+        services.AddSingleton<IconsFactory>();
+    }
+    
     protected override void OnStartup(StartupEventArgs e)
     {
         base.OnStartup(e);
-        var window = new MainWindow();
-        var vm = new MainWindowViewModel();
-        window.DataContext = vm;
+        AddDependencyInjection();
+        
+        var window = ServiceProvider.GetRequiredService<MainWindow>();
         window.Show();
     }
 }

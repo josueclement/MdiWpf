@@ -1,6 +1,7 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
 using System.Windows.Markup;
 using System.Windows.Media;
+using System;
 
 namespace MdiWpf;
 
@@ -9,8 +10,6 @@ namespace MdiWpf;
 /// </summary>
 public class IconSourceExtension : MarkupExtension
 {
-    private static readonly IconsFactory Factory = new();
-    
     /// <summary>
     /// Icon brush
     /// </summary>
@@ -23,5 +22,8 @@ public class IconSourceExtension : MarkupExtension
 
     /// <inheritdoc />
     public override object? ProvideValue(IServiceProvider serviceProvider)
-        => Factory.CreateDrawingImage(IconName, Brush);
+    {
+        var factory = serviceProvider.GetService<IconsFactory>() ?? new IconsFactory();
+        return factory.CreateDrawingImage(IconName, Brush);
+    }
 }

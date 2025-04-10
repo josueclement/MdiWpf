@@ -1,5 +1,6 @@
-using System;
+using Microsoft.Extensions.DependencyInjection;
 using System.Windows.Markup;
+using System;
 
 namespace MdiWpf;
 
@@ -8,8 +9,6 @@ namespace MdiWpf;
 /// </summary>
 public class IconGeometryExtension : MarkupExtension
 {
-    private static readonly IconsFactory Factory = new();
-    
     /// <summary>
     /// Icon name
     /// </summary>
@@ -17,5 +16,8 @@ public class IconGeometryExtension : MarkupExtension
 
     /// <inheritdoc />
     public override object? ProvideValue(IServiceProvider serviceProvider)
-        => Factory.CreateIconGeometry(IconName);
+    {
+        var factory = serviceProvider.GetService<IconsFactory>() ?? new IconsFactory();
+        return factory.CreateIconGeometry(IconName);
+    }
 }
