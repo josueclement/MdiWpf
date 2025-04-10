@@ -1,10 +1,11 @@
-using System;
+using Microsoft.Extensions.DependencyInjection;
 using System.Windows.Markup;
+using System;
 
 namespace MdiWpf;
 
 /// <summary>
-/// Provides an icon geometry based on its name
+/// Provides an icon geometry
 /// </summary>
 public class IconGeometryExtension : MarkupExtension
 {
@@ -12,8 +13,11 @@ public class IconGeometryExtension : MarkupExtension
     /// Icon name
     /// </summary>
     public string IconName { get; set; } = string.Empty;
-    
+
     /// <inheritdoc />
     public override object? ProvideValue(IServiceProvider serviceProvider)
-        => IconsManager.GetIconGeometry(IconName);
+    {
+        var factory = serviceProvider.GetService<IconsFactory>() ?? new IconsFactory();
+        return factory.CreateIconGeometry(IconName);
+    }
 }

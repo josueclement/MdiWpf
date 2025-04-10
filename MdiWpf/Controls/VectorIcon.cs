@@ -1,13 +1,14 @@
 ﻿using System.ComponentModel;
-using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows;
 
 namespace MdiWpf.Controls;
 
 /// <summary>
 /// Vector icon control
 /// </summary>
+// ReSharper disable once ClassWithVirtualMembersNeverInherited.Global
 public class VectorIcon : Control
 {
     static VectorIcon()
@@ -72,7 +73,7 @@ public class VectorIcon : Control
         DependencyProperty.Register(name: nameof(Brush),
                                     propertyType: typeof(Brush),
                                     ownerType: typeof(VectorIcon),
-                                    typeMetadata: new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsRender, OnBrushPropertyChanged));
+                                    typeMetadata: new PropertyMetadata(null, OnBrushPropertyChanged));
 
     /// <summary>
     /// Called when <see cref="BrushProperty"/> has changed

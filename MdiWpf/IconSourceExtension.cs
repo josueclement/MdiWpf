@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
 using System.Windows.Markup;
 using System.Windows.Media;
+using System;
 
 namespace MdiWpf;
 
 /// <summary>
-/// Provides an icon image source based on its name
+/// Provides an icon image source
 /// </summary>
 public class IconSourceExtension : MarkupExtension
 {
@@ -18,10 +19,11 @@ public class IconSourceExtension : MarkupExtension
     /// Icon name
     /// </summary>
     public string IconName { get; set; } = string.Empty;
-    
+
     /// <inheritdoc />
     public override object? ProvideValue(IServiceProvider serviceProvider)
     {
-        return IconsManager.GetIconImageSource(IconName, Brush);
+        var factory = serviceProvider.GetService<IconsFactory>() ?? new IconsFactory();
+        return factory.CreateDrawingImage(IconName, Brush);
     }
 }

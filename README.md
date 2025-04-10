@@ -1,8 +1,8 @@
 # MdiWpf
 
-MdiWpf is a .NET library that contains the Material Design Icons.
+MdiWpf is a WPF vector icon library using MaterialDesign open source icons.
 
-The icons are embedded in the library in svg format and their data are parsed with the `IconsManager` class.
+The icons are embedded in the library in svg format and their data are parsed with the `IconsFactory` class.
 
 The markup extensions `IconSource` and `IconGeometry` make the usage in XAML as easy as possible.
 
@@ -37,16 +37,4 @@ Example of `IconGeometry` markup extension with a `VectorIcon` :
                      Brush="Magenta" />
 ```
 
-Example with binding : 
-
-```xaml
-<controls:VectorIcon Geometry="{Binding Geometry}"
-                     Brush="{Binding Brush}" />
-```
-
-```csharp
-Brush = Brushes.Blue;
-Geometry = IconsManager.GetIconGeometry("source-repository");
-```
-
-2024 - Josué Clément
+Copyright (c) 2025 Josué Clément
